@@ -1,0 +1,87 @@
+<!-- Model Viewer Component Template -->
+<div #container class="relative w-full h-full bg-gray-900 overflow-hidden">
+  <!-- Three.js Canvas -->
+  <canvas #canvas class="block w-full h-full"></canvas>
+  
+  <!-- Overlay Controls -->
+  <div class="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
+    <button
+      (click)="startPlacingAnnotation()"
+      [disabled]="isPlacingAnnotation"
+      class="bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-300 text-black font-bold py-2 px-4 rounded shadow-lg transition-colors duration-200"
+    >
+      {{ isPlacingAnnotation ? 'Click in 3D to Place Annotation...' : 'Place Annotation' }}
+    </button>
+  </div>
+  
+  <!-- First Person Instructions -->
+  <div 
+    *ngIf="cameraMode === 'firstPerson'" 
+    class="absolute bottom-4 left-4 bg-black bg-opacity-75 text-white p-3 rounded-lg text-sm z-10"
+  >
+    <h4 class="font-bold mb-2">First Person Controls</h4>
+    <div class="space-y-1 text-xs">
+      <p><strong>Click</strong> to lock pointer</p>
+      <p><strong>WASD</strong> or <strong>Arrow Keys</strong> to move</p>
+      <p><strong>Mouse</strong> to look around</p>
+      <p><strong>ESC</strong> to unlock pointer</p>
+    </div>
+  </div>
+  
+  <!-- Orbit Controls Instructions -->
+  <div 
+    *ngIf="cameraMode === 'orbit'" 
+    class="absolute bottom-4 left-4 bg-black bg-opacity-75 text-white p-3 rounded-lg text-sm z-10"
+  >
+    <h4 class="font-bold mb-2">Orbit Controls</h4>
+    <div class="space-y-1 text-xs">
+      <p><strong>Left Click + Drag</strong> to rotate</p>
+      <p><strong>Right Click + Drag</strong> to pan</p>
+      <p><strong>Scroll</strong> to zoom</p>
+    </div>
+  </div>
+  
+  <!-- Loading Indicator -->
+  <div 
+    *ngIf="!scene" 
+    class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90 z-20"
+  >
+    <div class="text-white text-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+      <p class="text-lg">Loading 3D Environment...</p>
+    </div>
+  </div>
+  
+  <!-- Time of Day Indicator -->
+  <div class="absolute top-4 right-4 bg-black bg-opacity-75 text-white p-2 rounded-lg text-sm z-10">
+    <div class="flex items-center space-x-2">
+      <div class="w-4 h-4 rounded-full" [style.background-color]="isNight ? '#1a1a2e' : '#ffeb3b'"></div>
+      <span>{{ timeOfDay.toString().padStart(2, '0') }}:00</span>
+      <span class="text-xs text-gray-300">{{ isNight ? 'Night' : 'Day' }}</span>
+    </div>
+  </div>
+  
+  <!-- Performance Info (Development) -->
+  <div 
+    *ngIf="false" 
+    class="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white p-2 rounded-lg text-xs z-10"
+  >
+    <div>FPS: 60</div>
+    <div>Triangles: 1,234</div>
+    <div>Draw Calls: 5</div>
+  </div>
+  
+  <!-- Error Display -->
+  <div 
+    *ngIf="false" 
+    class="absolute inset-0 flex items-center justify-center bg-red-900 bg-opacity-90 z-30"
+  >
+    <div class="text-white text-center max-w-md">
+      <h2 class="text-2xl font-bold mb-4">WebGL Error</h2>
+      <p class="mb-4">Your browser or device doesn't support WebGL properly.</p>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Try Again
+      </button>
+    </div>
+  </div>
+</div> 

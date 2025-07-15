@@ -1,0 +1,35 @@
+<!-- Main Application Layout -->
+<div class="flex h-screen w-screen bg-gray-900 overflow-hidden">
+  <!-- Sidebar Component -->
+  <app-sidebar
+    [annotations]="annotations()"
+    [showAnnotations]="showAnnotations()"
+    [timeOfDay]="timeOfDay()"
+    [nightLightsEnabled]="nightLightsEnabled()"
+    [isNight]="isNight"
+    [cameraMode]="cameraMode()"
+    (editAnnotation)="onEditAnnotation($event.id, $event.title, $event.description)"
+    (deleteAnnotation)="onDeleteAnnotation($event)"
+    (toggleAnnotations)="onToggleAnnotations()"
+    (timeOfDayChange)="onTimeOfDayChange($event)"
+    (nightLightsToggle)="onNightLightsToggle()"
+    (modelUpload)="onModelUpload($event)"
+    (cameraModeChange)="onCameraModeChange($event)"
+  ></app-sidebar>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 h-full min-h-0 relative">
+    <!-- Model Viewer Component -->
+    <app-model-viewer
+      [annotations]="annotations()"
+      [showAnnotations]="showAnnotations()"
+      [timeOfDay]="timeOfDay()"
+      [nightLightsEnabled]="nightLightsEnabled()"
+      [isNight]="isNight"
+      [modelFile]="modelFile()"
+      [cameraMode]="cameraMode()"
+      (addAnnotation)="onAddAnnotation($event)"
+      (editAnnotation)="onEditAnnotation($event.id, $event.title, $event.description)"
+    ></app-model-viewer>
+  </main>
+</div> 
