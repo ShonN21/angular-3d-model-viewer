@@ -13,11 +13,11 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { v4 as uuidv4 } from 'uuid';
 import { Annotation, CameraMode } from '../../app';
 

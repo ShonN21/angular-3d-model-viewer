@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ModelViewerComponent } from './components/model-viewer/model-viewer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
@@ -17,7 +16,7 @@ export type CameraMode = 'orbit' | 'firstPerson';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ModelViewerComponent, SidebarComponent],
+  imports: [ModelViewerComponent, SidebarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
